@@ -43,18 +43,25 @@ export const Header = () => {
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-3">
-          <Image
-            src="/images/logo.jpg"
-            alt="Logo DNS Assainissement"
-            width={48}
-            height={48}
-            className="w-12 h-12 rounded-lg object-cover shadow-sm"
-            priority
-          />
+          <div
+            className={cn(
+              'w-12 h-12 rounded-xl overflow-hidden shrink-0 border flex items-center justify-center transition-colors',
+              !isScrolled && onHome ? 'bg-white/95 border-white/40 shadow-md' : 'bg-white border-gray-200 shadow-sm',
+            )}
+          >
+            <Image
+              src="/images/logo.jpg"
+              alt="Logo DNS Assainissement"
+              width={40}
+              height={40}
+              className="w-10 h-10 object-contain"
+              priority
+            />
+          </div>
           <div className="flex flex-col">
             <span
               className={cn(
-                'font-display font-bold text-xl leading-tight',
+                'font-display font-bold text-lg md:text-xl leading-tight',
                 !isScrolled && onHome ? 'text-white' : 'text-primary',
               )}
             >

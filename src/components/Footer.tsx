@@ -9,13 +9,15 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           <div className="flex flex-col gap-6">
             <Link href="/" className="flex items-center gap-3">
-              <Image
-                src="/images/logo.jpg"
-                alt="Logo DNS Assainissement"
-                width={48}
-                height={48}
-                className="w-12 h-12 rounded-lg object-cover"
-              />
+              <div className="w-14 h-14 rounded-xl overflow-hidden bg-white border border-white/20 shadow-md flex items-center justify-center shrink-0">
+                <Image
+                  src="/images/logo.jpg"
+                  alt="Logo DNS Assainissement"
+                  width={46}
+                  height={46}
+                  className="w-[46px] h-[46px] object-contain"
+                />
+              </div>
               <div className="flex flex-col">
                 <span className="font-display font-bold text-xl leading-tight">DNS Assainissement</span>
                 <span className="text-[10px] uppercase tracking-widest font-semibold text-white/60">
