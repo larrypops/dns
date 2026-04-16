@@ -29,14 +29,14 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
           target="_blank"
           rel="noreferrer"
           aria-label="Discuter avec DNS Assainissement sur WhatsApp"
-          className="fixed bottom-6 right-6 w-16 h-16 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl z-40 hover:scale-110 transition-transform active:scale-95"
+          className="fixed bottom-5 right-5 w-[68px] h-[68px] rounded-full flex items-center justify-center shadow-2xl z-40 hover:scale-110 transition-transform active:scale-95"
         >
           <Image
-            src="/images/whatsapp-logo.svg"
-            alt="Logo WhatsApp"
-            width={34}
-            height={34}
-            className="w-[34px] h-[34px]"
+            src="/images/whatsapp-official.svg"
+            alt="Logo officiel WhatsApp"
+            width={64}
+            height={64}
+            className="w-16 h-16 object-contain"
             priority
           />
         </a>
