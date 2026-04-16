@@ -1,0 +1,13 @@
+{
+  "name": "DNS Assainissement",
+  "description": "Expert en nettoyage, désinfection et assainissement à Yaoundé. Services professionnels pour particuliers et entreprises.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "Nettoyage professionnel",
+    "Désinfection",
+    "Désherbage",
+    "Traitement anti-nuisibles",
+    "Pisciculture",
+    "Agriculture"
+  ]
+}
