@@ -182,12 +182,13 @@ export const About = () => {
             viewport={{ once: true }}
             className="rounded-3xl overflow-hidden border border-gray-200 shadow-lg bg-white"
           >
-            <div className="relative aspect-[4/3]">
+            <div className="w-full bg-gray-50">
               <Image
                 src="/images/new-image-01.jpeg"
                 alt="Équipe DNS Service sur le terrain"
-                fill
-                className="object-cover"
+                width={960}
+                height={1280}
+                className="w-full h-auto object-contain"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
@@ -201,10 +202,11 @@ export const About = () => {
             className="rounded-3xl overflow-hidden border border-gray-200 shadow-lg bg-black"
           >
             <video
-              className="w-full h-full min-h-[320px] object-cover"
+              className="w-full h-auto max-h-[78vh] object-contain bg-black"
               controls
               preload="metadata"
               playsInline
+              poster="/images/new-image-01.jpeg"
             >
               <source src="/images/new-video-02.mp4" type="video/mp4" />
               Votre navigateur ne supporte pas la lecture vidéo.
