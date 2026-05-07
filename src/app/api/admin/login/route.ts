@@ -25,7 +25,7 @@ export async function POST(request: Request) {
   }
 
   const check = verifyAdminCredentials(username, password);
-  if (!check.ok) {
+  if (check.ok === false) {
     return NextResponse.json({ ok: false, error: check.error }, { status: 401 });
   }
 
