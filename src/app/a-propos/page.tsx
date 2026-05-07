@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import { About } from '../../views/About';
 import { SITE_NAME, absoluteUrl } from '../../lib/seo';
+import { getAboutContent } from '@/lib/content/about-content';
 
-export const dynamic = 'force-static';
-export const revalidate = 86400;
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'À propos de DNS Service',
@@ -25,6 +25,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function AboutPage() {
-  return <About />;
+export default async function AboutPage() {
+  const content = await getAboutContent();
+  return <About photos={content.media.photos} videos={content.media.videos} />;
 }

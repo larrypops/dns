@@ -99,7 +99,12 @@ export const Footer = () => {
 
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/40">
           <p>© {new Date().getFullYear()} DNS Assainissement. Tous droits réservés.</p>
-          <p>Réalisé avec excellence pour Yaoundé</p>
+          <div className="flex items-center gap-4">
+            <p>Réalisé avec excellence pour Yaoundé</p>
+            <Link href="/admin/login" className="text-[11px] uppercase tracking-[0.12em] text-white/30 hover:text-white/70 transition-colors">
+              Espace admin
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

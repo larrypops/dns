@@ -1,0 +1,19 @@
+{
+  "media": {
+    "photos": [
+      {
+        "id": "photo-default-1",
+        "url": "/images/new-image-01.jpeg",
+        "alt": "Équipe DNS Service sur le terrain"
+      }
+    ],
+    "videos": [
+      {
+        "id": "video-default-1",
+        "url": "/images/new-video-02.mp4",
+        "poster": "/images/new-image-01.jpeg",
+        "title": "DNS Service en action"
+      }
+    ]
+  }
+}

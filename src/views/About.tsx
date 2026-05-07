@@ -15,8 +15,14 @@ import {
 } from 'lucide-react';
 import { Section, Button } from '../components/UI';
 import { cn } from '../lib/utils';
+import type { AboutPhoto, AboutVideo } from '../lib/content/types';
 
-export const About = () => {
+type AboutProps = {
+  photos: AboutPhoto[];
+  videos: AboutVideo[];
+};
+
+export const About = ({ photos, videos }: AboutProps) => {
   const interventions = [
     {
       title: 'Assainissement et désinfection',
@@ -43,6 +49,13 @@ export const About = () => {
       color: 'bg-cyan-50 text-cyan-700',
     },
   ];
+
+  const mediaPhotos = photos.length
+    ? photos
+    : [{ id: 'photo-fallback', url: '/images/new-image-01.jpeg', alt: 'Équipe DNS Service sur le terrain' }];
+  const mediaVideos = videos.length
+    ? videos
+    : [{ id: 'video-fallback', url: '/images/new-video-02.mp4', poster: mediaPhotos[0]?.url, title: 'DNS Service en action' }];
 
   return (
     <div className="pt-24">
@@ -175,43 +188,59 @@ export const About = () => {
           <h3 className="text-4xl font-bold text-text-dark">DNS Service en action</h3>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="rounded-3xl overflow-hidden border border-gray-200 shadow-lg bg-white"
-          >
-            <div className="w-full bg-gray-50">
-              <Image
-                src="/images/new-image-01.jpeg"
-                alt="Équipe DNS Service sur le terrain"
-                width={960}
-                height={1280}
-                className="w-full h-auto object-contain"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
+        <div className="space-y-8">
+          {mediaPhotos.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+              {mediaPhotos.map((photo, index) => (
+                <motion.div
+                  key={photo.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.06 }}
+                  className="rounded-3xl overflow-hidden border border-gray-200 shadow-lg bg-white"
+                >
+                  <div className="w-full bg-gray-50">
+                    <Image
+                      src={photo.url}
+                      alt={photo.alt || 'Photo DNS Service'}
+                      width={960}
+                      height={1280}
+                      className="w-full h-auto object-contain"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      unoptimized={photo.url.startsWith('http')}
+                    />
+                  </div>
+                </motion.div>
+              ))}
             </div>
-          </motion.div>
+          ) : null}
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="rounded-3xl overflow-hidden border border-gray-200 shadow-lg bg-black"
-          >
-            <video
-              className="w-full h-auto max-h-[78vh] object-contain bg-black"
-              controls
-              preload="metadata"
-              playsInline
-              poster="/images/new-image-01.jpeg"
-            >
-              <source src="/images/new-video-02.mp4" type="video/mp4" />
-              Votre navigateur ne supporte pas la lecture vidéo.
-            </video>
-          </motion.div>
+          {mediaVideos.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+              {mediaVideos.map((video, index) => (
+                <motion.div
+                  key={video.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.08 }}
+                  className="rounded-3xl overflow-hidden border border-gray-200 shadow-lg bg-black"
+                >
+                  <video
+                    className="w-full h-auto max-h-[78vh] object-contain bg-black"
+                    controls
+                    preload="metadata"
+                    playsInline
+                    poster={video.poster || mediaPhotos[0]?.url}
+                  >
+                    <source src={video.url} />
+                    Votre navigateur ne supporte pas la lecture vidéo.
+                  </video>
+                </motion.div>
+              ))}
+            </div>
+          ) : null}
         </div>
       </Section>
 
